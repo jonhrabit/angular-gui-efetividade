@@ -4,14 +4,16 @@ import { inject } from '@angular/core';
 
 export const authGuard: CanActivateFn = (route, state) => {
   let authService = inject(AuthService);
-  if (authService.isAutenticado()) {
+  return authService.isAutenticado();
+
+ /*  if (authService.isAutenticado()) {
     let router = inject(Router);
     if (router.url != '/login/logout') {
       router.navigate(['/login']);
     }
-  }
+  } */
 
-  let path = state.url.split('/');
+  /* let path = state.url.split('/');
 
   switch (path[1]) {
     case '':
@@ -20,6 +22,6 @@ export const authGuard: CanActivateFn = (route, state) => {
       return authService.isAutorizado('BASIC');
     default:
       return true;
-  }
+  } */
 
 };

@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   isAutenticado() {
-    if (!sessionStorage.getItem('JSESSIONID')) {
+    if (sessionStorage.getItem('JSESSIONID')) {
       return true;
     }
     return false;
@@ -50,9 +50,12 @@ export class AuthService {
 
   getHeaders() {
     return {
-      authorization: 'Bearer ' + this.getToken(),
+      authorization: 'Bearer ' + this.getToken()
       /*       accept: "text/html,application/xhtml+xml,application",
       content: "application/json" */
     };
+  }
+  getUrl() {
+    return "http://localhost:8080";
   }
 }

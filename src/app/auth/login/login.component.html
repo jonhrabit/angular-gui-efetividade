@@ -3,14 +3,16 @@
     <div>
       <h6>Efetividade</h6>
     </div>
-    <div class="mb-3">
-      <input type="text" class="form-control" id="username" placeholder="Usuário">
-    </div>
-    <div class="mb-3">
-      <input type="password" class="form-control" id="password" placeholder="Senha">
-    </div>
-    <div class="botao p-3">
-      <button type="button" class="btn btn-primary" (click)="entrar()">Entrar</button>
-    </div>
+    <form [formGroup]="formLogin" (ngSubmit)="entrar()">
+      <div class="mb-3">
+        <input type="text" class="form-control" id="username" placeholder="Usuário" formControlName="username">
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" id="password" placeholder="Senha" formControlName="password">
+      </div>
+      <div class="botao p-3">
+        <button type="submit" class="btn btn-primary">Entrar</button>
+      </div>
+    </form>
   </div>
 </div>
