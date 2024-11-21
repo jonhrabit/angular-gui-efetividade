@@ -21,4 +21,15 @@ export class RegistrosService {
       }
     );
   }
+  getRegistros() {
+    let h = {
+      authorization: this.authService.getHeaders().authorization
+    };
+    return this.http.get(
+      this.authService.getUrl() + '/registros/periodo/2024/11',
+      {
+        headers: h,
+      }
+    );
+  }
 }

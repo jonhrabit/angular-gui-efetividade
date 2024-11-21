@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CadastroComponent } from '../cadastro/cadastro.component';
 import { Registro } from '../registro';
+import { CalendarioComponent } from "../calendario/calendario.component";
 
 @Component({
   selector: 'app-registros',
   standalone: true,
-  imports: [CadastroComponent],
+  imports: [CadastroComponent, CalendarioComponent],
   templateUrl: './registros.component.html',
   styleUrl: './registros.component.scss',
 })
