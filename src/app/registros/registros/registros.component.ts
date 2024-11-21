@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CadastroComponent } from '../cadastro/cadastro.component';
+import { Registro } from '../registro';
 
 @Component({
   selector: 'app-registros',
@@ -9,10 +10,12 @@ import { CadastroComponent } from '../cadastro/cadastro.component';
   styleUrl: './registros.component.scss',
 })
 export class RegistrosComponent {
-
+  registrosCadastrados!:[Registro];
+  erroDeCadastro!:[string];
 
   resultado($event: any) {
-    console.log("resultaado evento");
+    this.registrosCadastrados = $event.sucessos;
+    this.erroDeCadastro = $event.erros;
     console.log($event);
   }
 }

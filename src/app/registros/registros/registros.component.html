@@ -2,5 +2,22 @@
     <div class="cadastro">
         <app-cadastro (resultado)="resultado($event)"></app-cadastro>
     </div>
-    <div></div>
+    <div>
+        <div>
+            @for (reg of registrosCadastrados; track $index) {
+            <div class="alert alert-primary">
+                <div>{{reg.data}} - <span>{{reg.status}}</span> {{reg.vigilante.nome}} {{reg.vigilante.matricula}}</div>
+            </div>
+            }
+
+        </div>
+        <div>
+            @for (erro of erroDeCadastro; track $index) {
+            <div class="alert alert-danger">
+                <div>{{erro}}</div>
+            </div>
+            }
+
+        </div>
+    </div>
 </div>
