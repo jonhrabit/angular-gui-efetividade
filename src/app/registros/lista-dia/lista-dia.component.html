@@ -1,0 +1,20 @@
+<table class="table">
+    <tr>
+        <th>Vigilante</th>
+        <th>Escala</th>
+        <th>Status</th>
+        <th>Substituto</th>
+        <th>H. desc</th>
+    </tr>
+    @for (registro of registros; track $index) {
+    <tr>
+        <td>{{registro.vigilante.nome}}</td>
+        <td>{{registro.vigilante.escala}}</td>
+        <td>
+            <app-status-registro [texto]="registro.status"></app-status-registro>
+        </td>
+        <td>{{ registro.substituto!=null?registro.substituto.nome:""}}</td>
+        <td>{{registro.descontoHora}}</td>
+    </tr>
+    }
+</table>

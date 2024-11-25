@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Registro } from '../registro';
 import { Escalas } from '../../Escalas';
 
@@ -7,18 +7,24 @@ import { Escalas } from '../../Escalas';
   standalone: true,
   imports: [],
   template: `
-    <div style="width: 12rem;">
+    <div style="width: 12rem;" (click)="eventoClick()">
       <div>
         <h6>{{ dia }}</h6>
       </div>
-      <div class="texto">
+      <div class="lh-1 m-0 p-0" id="letra">
         @for (escala of escalas; track $index) { @if
         ((escala.diaUtil!=true)||(diaUtil!=false)) {
-        <p>
-          {{ escala.nome }} -
-          {{ valores[$index] }}
+        @if(escala.quantidade==valores[$index]) {
+        <p class="alert alert-success  m-0 p-1">
+          {{ escala.nome }}( <strong>{{ valores[$index] }}</strong
+          >)
         </p>
-        } }
+        }@else {
+        <p class="alert alert-danger m-0 p-1">
+          {{ escala.nome }}( <strong>{{ valores[$index] }}</strong
+          >)
+        </p>
+        } } }
       </div>
     </div>
   `,
@@ -28,6 +34,7 @@ export class DiaComponent implements OnInit {
   @Input() dia: number = 1;
   @Input() registros!: Registro[];
   @Input() diaUtil: boolean = false;
+  @Output() clicado = new EventEmitter();
 
   escalas = Escalas;
   valores: number[] = new Array(0);
@@ -42,5 +49,8 @@ export class DiaComponent implements OnInit {
         this.valores.push(v);
       }
     });
+  }
+  eventoClick(){
+    this.clicado.emit(this.dia);
   }
 }

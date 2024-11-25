@@ -33,4 +33,21 @@ export class RegistrosService {
       }
     );
   }
+  getRegistrosByDia(dia: number, mes: number, ano: number) {
+    let h = {
+      authorization: this.authService.getHeaders().authorization,
+    };
+    return this.http.get<Registro[]>(
+      this.authService.getUrl() +
+        '/registros/dia/' +
+        dia +
+        '/' +
+        mes +
+        '/' +
+        ano,
+      {
+        headers: h,
+      }
+    );
+  }
 }

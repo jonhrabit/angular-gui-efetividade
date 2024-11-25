@@ -13,7 +13,7 @@
     <tr>
         @for (dia of semana; track $index) {
         <td>
-            <app-dia [dia]="dia.dia" [registros]="dia.registros" [diaUtil]="dia.diaUtil"></app-dia>
+            <app-dia [dia]="dia.dia" [registros]="dia.registros" [diaUtil]="dia.diaUtil" (clicado)="dataSelect($event)"></app-dia>
         </td>
         }
     </tr>

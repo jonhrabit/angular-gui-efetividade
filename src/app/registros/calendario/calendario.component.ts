@@ -2,7 +2,7 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { DiaComponent } from '../dia/dia.component';
 import { RegistrosService } from '../registros.service';
 import { Registro } from '../registro';
-import { registerLocaleData } from '@angular/common';
+import { Router } from '@angular/router';
 
 interface data {
   dia: number;
@@ -18,7 +18,10 @@ interface data {
   styleUrl: './calendario.component.scss',
 })
 export class CalendarioComponent implements OnInit {
-  constructor(private registrosService: RegistrosService) {}
+  constructor(
+    private registrosService: RegistrosService,
+    private route: Router
+  ) {}
 
   @Input() mes: number = 1;
   @Input() ano: number = 2024;
@@ -103,5 +106,10 @@ export class CalendarioComponent implements OnInit {
         this.datas = this.gerarMes();
       },
     });
+  }
+
+  dataSelect($event: number) {
+    console.log($event);
+    this.route.navigateByUrl("/registros/dia/"+$event+"/"+this.mes+"/"+this.ano);
   }
 }
