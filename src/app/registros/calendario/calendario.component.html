@@ -1,1 +1,21 @@
-<p>calendario works!</p>
+<h1>{{meses[mes-1]}}</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>Domingo</th>
+        <th>Segunda</th>
+        <th>Terça</th>
+        <th>Quarta</th>
+        <th>Quinta</th>
+        <th>Sexta</th>
+        <th>Sábado</th>
+    </tr>
+    @for (semana of datas; track $index) {
+    <tr>
+        @for (dia of semana; track $index) {
+        <td>
+            <app-dia [dia]="dia.dia" [registros]="dia.registros" [diaUtil]="dia.diaUtil"></app-dia>
+        </td>
+        }
+    </tr>
+    }
+</table>

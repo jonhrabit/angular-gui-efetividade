@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { Registro } from './registro';
 
 @Injectable({
   providedIn: 'root',
@@ -21,12 +22,12 @@ export class RegistrosService {
       }
     );
   }
-  getRegistros() {
+  getRegistros(mes: number, ano: number) {
     let h = {
-      authorization: this.authService.getHeaders().authorization
+      authorization: this.authService.getHeaders().authorization,
     };
-    return this.http.get(
-      this.authService.getUrl() + '/registros/periodo/2024/11',
+    return this.http.get<Registro[]>(
+      this.authService.getUrl() + '/registros/periodo/' + mes + '/' + ano,
       {
         headers: h,
       }
